@@ -9,7 +9,8 @@
     "start": "node index.js",
     "build": "webpack",
     "dev": "webpack-dev-server",
-    "watch": "npm-run-all --parallel start dev"
+    "watch": "npm-run-all --parallel start dev",
+    "postinstall": "webpack"
   },
   "keywords": [],
   "author": "",
