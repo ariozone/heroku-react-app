@@ -18,9 +18,9 @@ export default class App extends React.Component {
     this.deleteTodo = this.deleteTodo.bind(this)
   }
   componentDidMount() {
-    fetch('/todos', {method: 'GET'})
+    fetch('/todos', { method: 'GET' })
       .then(res => res.json())
-      .then(todos => this.setState({todos}))
+      .then(todos => this.setState({ todos }))
   }
   addTodo(newTodo) {
     fetch('/todos', {
@@ -35,7 +35,8 @@ export default class App extends React.Component {
       method: 'PATCH',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(Object.assign({}, todo, { isCompleted: !todo.isCompleted })
-      )})
+      )
+    })
       .then(res => res.json())
       .then(updated => {
         const todos = this.state.todos.map(todo => todo.id === updated.id ? updated : todo)
@@ -47,7 +48,8 @@ export default class App extends React.Component {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(Object.assign({}, todo, { onDeleteClicked: !todo.onDeleteClicked })
-      )})
+      )
+    })
       .then(res => res.json())
       .then(deleted => {
         const todoIndex = this.state.todos.findIndex(todo => todo === deleted.id ? deleted : todo)
@@ -68,7 +70,7 @@ export default class App extends React.Component {
             <div style={styles.app}>
               <h1 className="text-center mb-4">Todo List</h1>
               <TodoForm onSubmit={this.addTodo} />
-              <TodoList todos = {this.state.todos} toggleCompleted={this.toggleCompleted} deleteTodo={this.deleteTodo}/>
+              <TodoList todos={this.state.todos} toggleCompleted={this.toggleCompleted} deleteTodo={this.deleteTodo} />
             </div>
           </div>
         </div>

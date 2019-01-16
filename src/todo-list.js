@@ -27,18 +27,18 @@ function TodoItem(props) {
           type="checkbox"
           checked={props.todo.isCompleted}
           className="form-check-input"
-          onChange={props.onCompletedChange}/>
+          onChange={props.onCompletedChange} />
         <label
           style={labelStyle}
           className={labelClass}
           htmlFor={`todo-${props.todo.id}`}>
-          { props.todo.task }
+          {props.todo.task}
         </label>
-        { props.todo.isCompleted &&
+        {props.todo.isCompleted &&
           <i
             style={styles.deleteIcon}
             onClick={props.onDeleteClicked}
-            className="fa fa-times text-danger float-right"/> }
+            className="fa fa-times text-danger float-right" />}
       </div>
     </li>
   )
@@ -53,7 +53,7 @@ export default function TodoList(props) {
             todo={todo}
             key={todo.id}
             onCompletedChange={() => props.toggleCompleted(todo.id)}
-            onDeleteClicked={() => props.deleteTodo(todo.id)}/>
+            onDeleteClicked={() => props.deleteTodo(todo.id)} />
         )
       }
     </ul>
