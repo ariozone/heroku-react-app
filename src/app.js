@@ -48,25 +48,15 @@ export default class App extends React.Component {
         this.setState({ todos })
       })
   }
-  deleteTodo(todo) {
-    fetch(`/todos/${todo}`, {
-      method: "DELETE",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(
-        Object.assign({}, todo, { onDeleteClicked: !todo.onDeleteClicked })
-      )
-    })
-      .then(res => res.json())
-      .then(deleted => {
-        const todoIndex = this.state.todos.findIndex(todo =>
-          todo === deleted.id ? deleted : todo
-        )
-        const todos = [
-          ...this.state.todos.slice(0, todoIndex),
-          ...this.state.todos.slice(todoIndex + 1)
-        ]
-        this.setState({ todos })
+  deleteTodo(id) {
+    const { todos } = this.state
+
+    fetch(`/todos/${id}`, { method: "DELETE" }).then(() => {
+      const newTodos = todos.filter(todo => todo.id !== id)
+      this.setState({
+        todos: newTodos
       })
+    })
   }
 
   render() {
