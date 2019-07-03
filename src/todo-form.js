@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 
 export default class TodoForm extends Component {
   constructor(props) {
     super(props)
-    this.state = { task: '' }
+    this.state = { task: "" }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -11,12 +11,14 @@ export default class TodoForm extends Component {
     const { value } = event.target
     this.setState({ task: value })
   }
+
   handleSubmit(event) {
     event.preventDefault()
     const { task } = this.state
     this.props.onSubmit({ task })
-    this.setState({ task: '' })
+    this.setState({ task: "" })
   }
+
   render() {
     const { task } = this.state
     const { handleChange, handleSubmit } = this
@@ -31,7 +33,8 @@ export default class TodoForm extends Component {
               value={task}
               placeholder="New Todo"
               onChange={handleChange}
-              className="form-control"/>
+              className="form-control"
+            />
             <div className="input-group-append">
               <button type="submit" className="btn btn-primary">
                 Add
