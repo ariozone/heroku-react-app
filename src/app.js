@@ -48,9 +48,8 @@ export default class App extends React.Component {
         this.setState({ todos })
       })
   }
-
-  deleteTodo(todoId) {
-    fetch(`/todos/${todoId}`, {
+  deleteTodo(todo) {
+    fetch(`/todos/${todo}`, {
       method: "DELETE",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(
@@ -60,11 +59,11 @@ export default class App extends React.Component {
       .then(res => res.json())
       .then(deleted => {
         const todoIndex = this.state.todos.findIndex(todo =>
-          todo.id === deleted.id ? deleted : todo
+          todo === deleted.id ? deleted : todo
         )
         const todos = [
-          ...this.state.todos.splice(1, todoIndex)
-          //
+          ...this.state.todos.slice(0, todoIndex),
+          ...this.state.todos.slice(todoIndex + 1)
         ]
         this.setState({ todos })
       })
