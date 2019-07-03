@@ -55,7 +55,7 @@ export default function TodoList(props) {
           todo={todo}
           key={todo.id}
           onCompletedChange={() => props.toggleCompleted(todo.id)}
-          onDeleteClicked={todo => props.deleteTodo(todo.id)}
+          onDeleteClicked={() => props.deleteTodo(todo.id)}
         />
       ))}
     </ul>
