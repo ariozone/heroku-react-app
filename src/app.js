@@ -62,12 +62,10 @@ export default class App extends React.Component {
         const todoIndex = this.state.todos.findIndex(todo =>
           todo.id === deleted.id ? deleted : todo
         )
-        const todos = this.state.todos.filter(todo => todo.id !== todoId)
-
-        // [
-        //   ...this.state.todos.slice(0, todoIndex),
-        //   ...this.state.todos.slice(todoIndex + 1)
-        // ]
+        const todos = [
+          ...this.state.todos.splice(1, todoIndex)
+          //
+        ]
         this.setState({ todos })
       })
   }
