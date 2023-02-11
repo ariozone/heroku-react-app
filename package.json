@@ -17,7 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^6.1.0",
-    "json-server": "^0.15.1",
+    "json-server": "^0.17.1",
     "react": "16.5.2",
     "react-dom": "16.5.2",
     "watch": "^1.0.2"
